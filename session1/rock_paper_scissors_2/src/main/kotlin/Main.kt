@@ -1,7 +1,7 @@
 fun main(){
     val choices = arrayOf("rock", "paper", "scissors")
     val computerChoice = choices.random()
-    val userChoice = "paper"
+    val userChoice = choices.random()
 
     println("You chose $userChoice")
     println("Computer chose $computerChoice")
