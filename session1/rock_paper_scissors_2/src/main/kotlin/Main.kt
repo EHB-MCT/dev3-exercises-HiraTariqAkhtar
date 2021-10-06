@@ -6,7 +6,7 @@ fun main(){
 }
 
 fun choose(computerChoice:String){
-    println("Rock paper or scissors??")
+    println("Rock, paper or scissors??")
     val answer = readLine()
     checkAnswer(answer, computerChoice)
 }
@@ -16,7 +16,7 @@ fun checkAnswer(answer:String?, computerChoice:String){
     if ((answer == "rock") ||(answer == "paper")||(answer == "scissors") ) {
         determineWinner(computerChoice, answer)
     } else{
-        println("This is not an option. Try again")
+        println("$answer is not an option. Try again")
         choose(computerChoice)
     }
 }
