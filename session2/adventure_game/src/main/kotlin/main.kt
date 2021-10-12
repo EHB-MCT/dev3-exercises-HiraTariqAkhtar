@@ -12,7 +12,7 @@ fun main(){
 
 fun challengeOne(friend:String?){
     println("Solve the following riddle to continue the search:")
-    val options = listOf("strawberry", "watermelon", "raspberry")
+    val options = setOf("strawberry", "watermelon", "raspberry")
     println("You find a plate on the dining table, it has red spots on it.")
     println("Which fruit do you think ${friend} was eating?")
     val answer = readLine()
@@ -20,7 +20,7 @@ fun challengeOne(friend:String?){
         println("Please fill a fruitname in")
         readLine()
     }
-    if (answer == options[0] || answer == options[1] || answer == options[2]){
+    if (options.contains (answer)){
         println("This is certainly possible, watch around to find more clues")
         challengeTwo(friend)
     } else{
@@ -30,5 +30,5 @@ fun challengeOne(friend:String?){
 
 fun gameOver(friend:String?){
     println("You've given the wrong answer")
-    println("Your search stops here, you couldn't find ${friend}")
+    println("Your search stops here, you couldn't rescue ${friend}")
 }
