@@ -15,6 +15,7 @@ fun challengeOne(friend:String?){
     val options = setOf("strawberry", "watermelon", "raspberry")
     println("You find a plate on the dining table, it has red spots on it.")
     println("Which fruit do you think ${friend} was eating?")
+    println("Note: if you give the wrong answer, your adventure will stop here")
     val answer = readLine()
     if (options.contains(answer)){
         println("You guessed it right!")
@@ -22,6 +23,7 @@ fun challengeOne(friend:String?){
         println("There, you find a note with an adress of where your friend is being held")
         challengeTwo(friend)
     } else{
+        println("Wrong answer")
         gameOver(friend)
     }
 }
@@ -30,7 +32,7 @@ fun challengeTwo(friend:String?){
     println("You find ${friend} roped on a chair as soon as you get there, but you have to get through your worse enemy first")
     println("Firstly, you have to predict a dice roll")
     println("If you guess it right, you're one step closer at rescuing your best friend")
-    println("If not, you can't get further")
+    println("If not, you can't go further")
     rollDice(friend)
 }
 fun rollDice(friend:String?){
@@ -43,22 +45,21 @@ fun rollDice(friend:String?){
         } else if(userAnswer == "high" && (4..6).contains(randomNumber)){
             challengeThree(friend)
     } else {
+        println("${userAnswer} is unfortunately the wrong answer")
         gameOver(friend)
     }
 }
 
 fun challengeThree(friend:String?){
-    println("Your choice is now going to be crucial for the rescue of ${friend}")
+    println("Your choice is now going to be crucial for the ${friend}'s rescue")
     println("What will you choose?")
     println("Run away, find a distraction or fight?")
     val answer = readLine()
     if (answer == "run away"){
-        println("You've let your friend down. What a disloyal friend you are! Shame of you!")
+        println("You've let your friend down. What a disloyal friend you are! Shame on you!")
+        gameOver(friend)
     } else if(answer == "find a distraction"){
-        println("You almost got a way to rescue ${friend} but your enemy saw you")
-        println("You have to predict the roll dice again")
-        println("Note: if you get it wrong now, all your chances to rescue ${friend} will be gone...")
-        rollDice(friend)
+        distractionChoice(friend)
     } else if(answer == "fight"){
         println("You chose to fight your enemy")
         println("Get ready for your next challenge")
@@ -68,12 +69,35 @@ fun challengeThree(friend:String?){
     }
 }
 
+fun distractionChoice(friend:String?){
+    println("You look around to find a distraction")
+    println("You see a dog and a painting on the wall")
+    println("What will you do?")
+    println("Ask about the painting or throw something at the dog?")
+    val answer = readLine()
+    if (answer == "ask about the painting"){
+        println("You begin to ask questions about the painting")
+        println("While your enemy is answering your questions you carefully go towards your friend ")
+        println("You almost reached ${friend} but your enemy saw you")
+        println("You get one more chance")
+        println("You have to predict the roll dice again")
+        println("Note: if you get it wrong now, all your chances to rescue your friend will be gone...")
+        rollDice(friend)
+    } else if(answer == "throw something at the dog"){
+        println("You find a rock on the ground and you throw it at the dog")
+        println("The dog gets angry and starts to bark very loudly")
+        println("The dog is so out of control that your enemy has to go to him to check what's wrong")
+        println("You run to ${friend}, get him out of the chair and run back home")
+        success(friend)
+    }
+
+}
+
 fun challengeFour(friend:String?){
     
 }
 
 fun gameOver(friend:String?){
-    println("You've given the wrong answer")
     println("Your adventure stops here, you couldn't rescue ${friend}")
 }
 
