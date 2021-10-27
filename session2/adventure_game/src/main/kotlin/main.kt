@@ -106,12 +106,12 @@ fun challengeFour(friend:String?, user:String?){
     println("You just have to guess the number between 1 and 100")
     println("NOTE: You'll keep guessing till you find the right number")
     println("READY, SET, GO!!")
+    println("Which number can it be?")
     val num = (1..100).random()
     guessNumber(friend, user, num)
 }
 
 fun guessNumber(friend: String?, user: String?, num:Int){
-    println("Which number can it be?")
     var guess = readLine()?.toInt()
     if (num == guess){
         println("${guess} is the right number")
