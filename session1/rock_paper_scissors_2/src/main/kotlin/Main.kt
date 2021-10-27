@@ -44,5 +44,15 @@ fun determineWinner(computerChoice: String, userChoice: String){
         println(loseMsg)
     }
 
+    playAgain()
 
+}
+fun playAgain(){
+    println("Do you want to play again?")
+    val resp = readLine()
+    if(resp == "yes" || resp == "Yes"){
+        main()
+    } else{
+        println("GAME OVER")
+    }
 }
