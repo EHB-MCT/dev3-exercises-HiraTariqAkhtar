@@ -1,0 +1,327 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\fswiss\fcharset0 ArialMT;\f2\fswiss\fcharset0 Helvetica-Bold;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red71\green71\blue71;\red0\green0\blue0;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\cssrgb\c34902\c34902\c34902;\cssrgb\c0\c0\c0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15580\viewh22400\viewkind0
+\deftab720
+\pard\pardeftab720\sl276\partightenfactor0
+
+\f0\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+Queries first batch\
+
+\f1\b0\fs48 \cf3 \
+\pard\tx566\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs28 \cf4 \ul \ulc4 What is the product with this number: S24_3856?\
+
+\f3\b0\fs24 \cf3 \ulnone \
+
+\f2\b \cf4 QUERY
+\f3\b0 \cf3 \
+\cf4 \kerning1\expnd0\expndtw0 SELECT products.productName FROM products\
+WHERE products.productCode = 'S24_3856'\
+\
+
+\f2\b OUTPUT
+\f3\b0 \
+1956 Porsche 356A Coupe\
+\
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+\cf4 \
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs28 \cf4 \ul What is the average product price?\
+
+\f3\b0\fs24 \
+
+\f2\b \ulnone QUERY
+\f3\b0 \ul \
+\ulnone SELECT AVG(products.buyPrice) FROM products\
+\
+
+\f2\b OUTPUT
+\f3\b0 \
+54.395182\
+\
+\
+
+\f2\b\fs28 \ul How many products have "Ford" in the name?\
+
+\f3\b0\fs24 \
+
+\f2\b \ulnone QUERY
+\f3\b0 \ul \
+\ulnone SELECT COUNT (*) FROM products\
+WHERE products.productName LIKE '%Ford%'\
+\
+
+\f2\b OUTPUT 
+\f3\b0 \
+15\
+\
+\
+
+\f2\b\fs28 \ul What is the most expensive product?\
+\
+
+\fs24 \ulnone QUERY\
+
+\f3\b0 SELECT MAX(products.buyPrice) FROM products\
+
+\f2\b \
+OUTPUT
+\f3\b0 \expnd0\expndtw0\kerning0
+\
+103.42\kerning1\expnd0\expndtw0 \
+\
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs28 \cf4 \ul \ulc4 How many ships are in the products?\
+\
+
+\fs24 \ulnone QUERY\
+
+\f3\b0 SELECT COUNT(*) FROM products\
+WHERE products.productLine = 'Ships'
+\f2\b \
+\
+OUTPUT
+\f3\b0 \expnd0\expndtw0\kerning0
+\
+9 \
+\
+\
+\pard\pardeftab720\sl276\partightenfactor0
+
+\f0\b\fs32 \cf2 Queries second batch\
+
+\f1\b0\fs48 \cf3 \
+\pard\tx566\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs28 \cf4 \ul \ulc4 How many orders were made by customer with nr 328?\
+
+\f3\b0\fs24 \cf3 \ulnone \
+
+\f2\b \cf4 QUERY
+\f3\b0 \cf3 \
+\pard\tx566\pardeftab720\sl276\partightenfactor0
+\cf4 SELECT COUNT(orders.orderNumber) FROM orders\
+WHERE orders.customerNumber = '328'\kerning1\expnd0\expndtw0 \
+\
+\pard\tx566\pardeftab720\sl276\partightenfactor0
+
+\f2\b \cf4 OUTPUT
+\f3\b0 \
+3\
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+\cf4 \
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs28 \cf4 \ul How many orders were made by customer Julie Young?\
+
+\f3\b0\fs24 \
+
+\f2\b \ulnone QUERY
+\f3\b0 \ul \
+\ulnone SELECT COUNT(*) FROM orders\
+LEFT JOIN customers ON customers.customerNumber = orders.customerNumber\
+WHERE customers.contactFirstName = 'Julie' AND customers.contactLastName='Young'\
+\
+
+\f2\b OUTPUT
+\f3\b0 \
+3\
+\
+
+\f2\b\fs28 \ul How many customers from the USA have credit limit of 0?\
+
+\f3\b0\fs24 \
+
+\f2\b \ulnone QUERY
+\f3\b0 \ul \
+\ulnone SELECT COUNT(*) FROM customers\
+WHERE customers.country ='USA' AND customers.creditLimit = '0'\
+\
+
+\f2\b OUTPUT 
+\f3\b0 \
+1\
+\
+\
+
+\f2\b\fs28 \ul Who makes the biggest payments on average?\
+\
+
+\fs24 \ulnone QUERY\
+
+\f3\b0 SELECT customers.customerName, AVG(amount) AS average FROM payments\
+INNER JOIN customers ON customers.customerNumber = payments.customerNumber\
+GROUP BY customers.customerNumber\
+ORDER BY average DESC\
+LIMIT 1\
+
+\f2\b \
+OUTPUT\
+
+\f3\b0 customerName: Collectable Mini Designs Co.\
+average : 80375.240000\
+\
+\
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\f2\b\fs32 \cf2 Queries third batch\
+\
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\fs28 \cf4 \ul How much did William Brown pay in 2004?\
+\
+
+\fs24 \ulnone QUERY\
+
+\f3\b0 SELECT YEAR (payments.paymentDate) AS year_of_payment, SUM(payments.amount) AS total FROM payments\
+INNER JOIN customers on customers.customerNumber = payments.customerNumber\
+WHERE customers.contactFirstName = 'William' AND customers.contactLastName = 'Brown'\
+GROUP BY year_of_payment
+\f2\b \
+\
+OUTPUT
+\fs28 \
+
+\f3\b0 year_of_payment : 2004\
+total : 38281.51
+\f2\b \
+\ul \
+Get a list of costumer names and the name of their representative. Only include costumers with a representative.\
+\
+
+\fs24 \ulnone QUERY\
+
+\f3\b0 SELECT customers.customerName, employees.firstName AS representative_firstName, employees.lastName AS representative_lastName FROM customers\
+INNER JOIN employees on employees.employeeNumber = customers.salesRepEmployeeNumber
+\f2\b \
+\
+OUTPUT\
+
+\f3\b0 customerName representative_firstName representative_lastName
+\f2\b \
+
+\f3\b0 Mini Gifts Distributors Ltd.	Leslie	Jennings\
+Mini Wheels Co.	Leslie	Jennings\
+Technics Stores Inc.	Leslie	Jennings\
+Corporate Gift Ideas Co.	Leslie	Jennings\
+The Sharp Gifts Warehouse	Leslie	Jennings\
+Signal Collectibles Ltd.	Leslie	Jennings\
+Signal Gift Stores	Leslie	Thompson\
+Toys4GrownUps.com	Leslie	Thompson\
+Boards & Toys Co.	Leslie	Thompson\
+Collectable Mini Designs Co.	Leslie	Thompson\
+"Men 'R' US Retailers, Ltd."	Leslie	Thompson\
+West Coast Collectables Co.	Leslie	Thompson\
+Cambridge Collectables Co.	Julie	Firrelli\
+Online Mini Collectables	Julie	Firrelli\
+Mini Creations Ltd.	Julie	Firrelli\
+Classic Gift Ideas, Inc	Julie	Firrelli\
+Collectables For Less Inc.	Julie	Firrelli\
+Diecast Collectables	Julie	Firrelli\
+Diecast Classics Inc.	Steve	Patterson\
+Auto-Moto Classics Inc.	Steve	Patterson\
+"Marta's Replicas Co."	Steve	Patterson\
+Gifts4AllAges.com	Steve	Patterson\
+Online Diecast Creations Co.	Steve	Patterson\
+FunGiftIdeas.com	Steve	Patterson\
+Muscle Machine Inc	Foon Yue	Tseng\
+American Souvenirs Inc	Foon Yue	Tseng\
+Vitachrome Inc.	Foon Yue	Tseng\
+Qu\'e9bec Home Shopping Network	Foon Yue	Tseng\
+Classic Legends Inc.	Foon Yue	Tseng\
+Super Scale Inc.	Foon Yue	Tseng\
+Microscale Inc.	Foon Yue	Tseng\
+Land of Toys Inc.	George	Vanauf\
+Gift Depot Inc.	George	Vanauf\
+Canadian Gift Exchange Network	George	Vanauf\
+Royal Canadian Collectables, Ltd.	George	Vanauf\
+Mini Classics	George	Vanauf\
+Tekni Collectables Inc.	George	Vanauf\
+Gift Ideas Corp.	George	Vanauf\
+Motor Mint Distributors Inc.	George	Vanauf\
+Saveley & Henriot, Co.	Loui	Bondur\
+"La Corne D'abondance, Co."	Loui	Bondur\
+Lyon Souveniers	Loui	Bondur\
+Marseille Mini Autos	Loui	Bondur\
+Reims Collectables	Loui	Bondur\
+Auto Canal+ Petit	Loui	Bondur\
+Atelier graphique	Gerard	Hernandez\
+La Rochelle Gifts	Gerard	Hernandez\
+Euro+ Shopping Channel	Gerard	Hernandez\
+Daedalus Designs Imports	Gerard	Hernandez\
+Mini Caravy	Gerard	Hernandez\
+Alpha Cognac	Gerard	Hernandez\
+Auto Associ\'e9s & Cie.	Gerard	Hernandez\
+Danish Wholesale Imports	Pamela	Castillo\
+Heintze Collectables	Pamela	Castillo\
+Amica Models & Co.	Pamela	Castillo\
+Rovelli Gifts	Pamela	Castillo\
+Petit Auto	Pamela	Castillo\
+Royale Belge	Pamela	Castillo\
+Salzburg Collectables	Pamela	Castillo\
+"L'ordine Souveniers"	Pamela	Castillo\
+Mini Auto Werke	Pamela	Castillo\
+Frau da Collezione	Pamela	Castillo\
+Toys of Finland, Co.	Larry	Bott\
+AV Stores, Co.	Larry	Bott\
+UK Collectables, Ltd.	Larry	Bott\
+giftsbymail.co.uk	Larry	Bott\
+Oulu Toy Supplies, Inc.	Larry	Bott\
+Stylish Desk Decors, Co.	Larry	Bott\
+Suominen Souveniers	Larry	Bott\
+Double Decker Gift Stores, Ltd	Larry	Bott\
+Baane Mini Imports	Barry	Jones\
+Blauer See Auto, Co.	Barry	Jones\
+Volvo Model Replicas, Co	Barry	Jones\
+Herkku Gifts	Barry	Jones\
+Clover Collections, Co.	Barry	Jones\
+Toms Spezialit\'e4ten, Ltd	Barry	Jones\
+Norway Gifts By Mail, Co.	Barry	Jones\
+Bavarian Collectables Imports, Co.	Barry	Jones\
+Scandinavian Gift Ideas	Barry	Jones\
+Australian Collectors, Co.	Andy	Fixter\
+"Anna's Decorations, Ltd"	Andy	Fixter\
+Souveniers And Things Co.	Andy	Fixter\
+Australian Gift Network, Co	Andy	Fixter\
+Australian Collectables, Ltd	Andy	Fixter\
+Handji Gifts& Co	Peter	Marsh\
+Down Under Souveniers, Inc	Peter	Marsh\
+GiftsForHim.com	Peter	Marsh\
+Extreme Desk Decorations, Ltd	Peter	Marsh\
+"Kelly's Gift Shop"	Peter	Marsh\
+Dragon Souveniers, Ltd.	Mami	Nishi\
+Osaka Souveniers Co.	Mami	Nishi\
+King Kong Collectables, Co.	Mami	Nishi\
+Cruz & Sons Co.	Mami	Nishi\
+Tokyo Collectables, Ltd	Mami	Nishi\
+Enaco Distributors	Martin	Gerard\
+Vida Sport, Ltd	Martin	Gerard\
+CAF Imports	Martin	Gerard\
+Precious Collectables	Martin	Gerard\
+Corrida Auto Replicas, Ltd	Martin	Gerard\
+Iberia Gift Imports, Corp.	Martin	Gerard
+\f2\b \
+
+\fs28 \ul \
+What office is costumer The Sharp Gifts Warehouse tied to?\
+\
+
+\fs24 \ulnone QUERY\
+\
+\
+OUTPUT\ul \
+\pard\pardeftab720\sl276\partightenfactor0
+\cf4 \ulnone \
+\pard\tx566\tx1133\pardeftab720\sl276\partightenfactor0
+
+\f3\b0 \cf4 \expnd0\expndtw0\kerning0
+\
+}
