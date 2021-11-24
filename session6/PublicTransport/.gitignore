@@ -2,3 +2,6 @@
 *.iml
 Credentials.kt
 out
+
+.java
+mysql-connector-java-8.0.27
