@@ -12,8 +12,8 @@ class Duolingo{
         println("Veel succes!!")
 
         val randomWords = words.shuffled().take(5).toMutableSet()
-        // .shuffled => zodat we niet elke keer 5 dezelfde hebben
-        // .take() => aantal items uit set nemen
+        // .shuffled => zodat we niet elke keer dezelfde hebben
+        // .take() => aantal items nemen (waarde tussen haakjes = aantal)
         // toMutableSet => zodat een item kan worden weggehaald
 
         while (randomWords.isNotEmpty()){
