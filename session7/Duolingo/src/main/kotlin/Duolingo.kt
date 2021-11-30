@@ -5,8 +5,12 @@ class Duolingo{
         Word("garçon", "jongen", "fr"),
         Word("nom", "naam", "fr"),
         Word("vache", "koe", "fr"),
-        Word("chat", "kat", "fr")
-    )
+        Word("chat", "kat", "fr"),
+        Word("chien", "hond", "fr"),
+        Word("bras", "arm", "fr"),
+        Word("pied", "voet", "fr"),
+        Word("chaise", "stoel", "fr")
+        )
     fun play(){
         println("Vertaal de volgende Franse woorden naar het Nederlands:")
         println("Veel succes!!")
