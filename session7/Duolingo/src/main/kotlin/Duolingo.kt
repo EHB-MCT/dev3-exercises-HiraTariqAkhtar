@@ -27,9 +27,17 @@ class Duolingo{
             } else{
                 println("Je antwoord is fout")
                 println("Het juiste antwoord was ${selectedWord.translated}")
+                println("--Dit woord zal later opnieuw komen--")
             }
 
-            println("Er blijven nog ${randomWords.count()} woorden over")
+            if(randomWords.count() > 1){
+                println("Er blijven nog ${randomWords.count()} woorden over")
+            } else if(randomWords.count() == 1) {
+                println("Er blijft nog ${randomWords.count()} woord over")
+            } else{
+                println("Er blijven geen woorden meer over")
+                println("EINDE")
+            }
         }
     }
 }
