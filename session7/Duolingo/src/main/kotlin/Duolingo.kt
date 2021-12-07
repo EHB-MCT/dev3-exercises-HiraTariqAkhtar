@@ -1,5 +1,6 @@
 class Duolingo{
     val words = mutableSetOf<Word>(
+        //Frans
         Word("maison", "huis", "fr"),
         Word("fille", "meisje", "fr"),
         Word("garçon", "jongen", "fr"),
@@ -9,10 +10,22 @@ class Duolingo{
         Word("chien", "hond", "fr"),
         Word("bras", "arm", "fr"),
         Word("pied", "voet", "fr"),
-        Word("chaise", "stoel", "fr")
+        Word("chaise", "stoel", "fr"),
+
+        //Engels
+        Word("house", "huis", "eng"),
+        Word("girl", "meisje", "eng"),
+        Word("boy", "jongen", "eng"),
+        Word("name", "naam", "eng"),
+        Word("cow", "koe", "eng"),
+        Word("cat", "kat", "eng"),
+        Word("dog", "hond", "eng"),
+        Word("arm", "arm", "eng"),
+        Word("foot", "voet", "eng"),
+        Word("chair", "stoel", "eng")
         )
     fun play(){
-        println("Vertaal de volgende Franse woorden naar het Nederlands:")
+        println("Vertaal de volgende Franse/Engelse woorden naar het Nederlands:")
         println("Veel succes!!")
 
         val randomWords = words.shuffled().take(5).toMutableSet()
