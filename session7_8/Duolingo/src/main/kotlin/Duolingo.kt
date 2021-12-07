@@ -48,10 +48,18 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
             if (answer == selectedWord.translated){
                 randomWords.remove(selectedWord)
                 println("Je antwoord is juist")
+
+                // Indien speler juist antwoordt, wordt moeilijkheidsgraad verminderd met 1
+                selectedWord.difficulty -=1
+                println("Moeilijkheidsgraad van het woord voor speler: "+selectedWord.difficulty)
             } else{
                 println("Je antwoord is fout")
                 println("Het juiste antwoord was ${selectedWord.translated}")
                 println("--Dit woord zal later opnieuw komen--")
+
+                // Indien speler fout antwoordt, wordt moeilijkheidsgraad vermeerderd met 2
+                selectedWord.difficulty +=2
+                println("Moeilijkheidsgraad van het woord voor speler: "+selectedWord.difficulty)
             }
 
             if(randomWords.count() > 1){
