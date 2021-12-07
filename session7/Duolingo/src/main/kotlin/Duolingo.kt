@@ -21,6 +21,7 @@ class Duolingo{
         // toMutableSet => zodat een item kan worden weggehaald
 
         while (randomWords.isNotEmpty()){
+            // .isNotEmpty => totdat er woorden over zijn
             val selectedWord = randomWords.random()
             println(selectedWord.original)
             val answer = readLine()
