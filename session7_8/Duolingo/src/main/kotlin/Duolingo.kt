@@ -40,7 +40,7 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
         // toMutableSet => zodat een item kan worden weggehaald
 
         while (randomWords.isNotEmpty()){
-            // .isNotEmpty => totdat er woorden over zijn
+            // .isNotEmpty => totdat er nog woorden over zijn in randomWords
             val selectedWord = randomWords.random()
             println(selectedWord.original)
             val answer = readLine()
