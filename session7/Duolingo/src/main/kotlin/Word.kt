@@ -1,2 +1,2 @@
-class Word(val original: String, val translated: String, val language: String) {
+open class Word(open val original: String, open val translated: String, open val language: String) {
 }

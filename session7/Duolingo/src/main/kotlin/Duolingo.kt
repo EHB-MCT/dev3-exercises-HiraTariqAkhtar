@@ -1,32 +1,33 @@
 class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
     var words = mutableSetOf<Word>(
         //Frans
-        Word("maison", "huis", "fr"),
-        Word("fille", "meisje", "fr"),
-        Word("garçon", "jongen", "fr"),
-        Word("nom", "naam", "fr"),
-        Word("vache", "koe", "fr"),
-        Word("chat", "kat", "fr"),
-        Word("chien", "hond", "fr"),
-        Word("bras", "arm", "fr"),
-        Word("pied", "voet", "fr"),
-        Word("chaise", "stoel", "fr"),
+        FrenchWord("maison", "huis"),
+        FrenchWord("fille", "meisje"),
+        FrenchWord("garçon", "jongen"),
+        FrenchWord("nom", "naam"),
+        FrenchWord("vache", "koe"),
+        FrenchWord("chat", "kat"),
+        FrenchWord("chien", "hond"),
+        FrenchWord("bras", "arm"),
+        FrenchWord("pied", "voet"),
+        FrenchWord("chaise", "stoel"),
 
         //Engels
-        Word("house", "huis", "eng"),
-        Word("girl", "meisje", "eng"),
-        Word("boy", "jongen", "eng"),
-        Word("name", "naam", "eng"),
-        Word("cow", "koe", "eng"),
-        Word("cat", "kat", "eng"),
-        Word("dog", "hond", "eng"),
-        Word("arm", "arm", "eng"),
-        Word("foot", "voet", "eng"),
-        Word("chair", "stoel", "eng")
+        EnglishWord("house", "huis"),
+        EnglishWord("girl", "meisje"),
+        EnglishWord("boy", "jongen"),
+        EnglishWord("name", "naam"),
+        EnglishWord("cow", "koe"),
+        EnglishWord("cat", "kat"),
+        EnglishWord("dog", "hond"),
+        EnglishWord("arm", "arm"),
+        EnglishWord("foot", "voet"),
+        EnglishWord("chair", "stoel")
         )
-    
+
     init{
          words = words.filter { it.language == lang }.toMutableSet()
+        // toMutableSet => we krijgen een list na de filter
     }
 
     fun play(){
