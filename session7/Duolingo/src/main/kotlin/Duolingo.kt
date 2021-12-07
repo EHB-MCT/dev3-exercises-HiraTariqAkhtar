@@ -1,4 +1,4 @@
-class Duolingo{
+class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
     val words = mutableSetOf<Word>(
         //Frans
         Word("maison", "huis", "fr"),
@@ -25,10 +25,11 @@ class Duolingo{
         Word("chair", "stoel", "eng")
         )
     fun play(){
-        println("Vertaal de volgende Franse/Engelse woorden naar het Nederlands:")
+        println("Vertaal de volgende woorden naar het Nederlands:")
         println("Veel succes!!")
 
-        val randomWords = words.shuffled().take(5).toMutableSet()
+        val filtered = words.filter { it.language == lang }
+        val randomWords = filtered.shuffled().take(roundSize).toMutableSet()
         // .shuffled => zodat we niet elke keer dezelfde hebben
         // .take() => aantal items nemen (waarde tussen haakjes = aantal)
         // toMutableSet => zodat een item kan worden weggehaald
