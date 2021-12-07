@@ -33,6 +33,9 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
     fun play(){
         println("Vertaal de volgende woorden naar het Nederlands:")
         println("Veel succes!!")
+        println("Elk woord heeft een standaard en minimum moeilijkheidsgraad van 1")
+        println("Indien jij juist antwoordt, wordt de moeilijkheidsgraad verminderd met 1")
+        println("Indien jij fout antwoordt, wordt de moeilijkheidsgraad vermeerderd met 2")
 
         val randomWords = words.shuffled().take(roundSize).toMutableSet()
         // .shuffled => zodat we niet elke keer dezelfde hebben
@@ -43,13 +46,14 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
             // .isNotEmpty => totdat er nog woorden over zijn in randomWords
             val selectedWord = randomWords.random()
             println(selectedWord.original)
+            println("-- Moeilijkheidsgraad van het woord : ${selectedWord.difficulty} --")
             val answer = readLine()
 
             if (answer == selectedWord.translated){
                 randomWords.remove(selectedWord)
                 println("Je antwoord is juist")
 
-                // Indien speler juist antwoordt, wordt moeilijkheidsgraad verminderd met 1
+                // moeilijkheidsgraad verminderen met 1
                 selectedWord.difficulty -=1
                 println("Moeilijkheidsgraad van het woord voor speler: "+selectedWord.difficulty)
             } else{
@@ -57,7 +61,7 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
                 println("Het juiste antwoord was ${selectedWord.translated}")
                 println("--Dit woord zal later opnieuw komen--")
 
-                // Indien speler fout antwoordt, wordt moeilijkheidsgraad vermeerderd met 2
+                // moeilijkheidsgraad vermeerderen met 2
                 selectedWord.difficulty +=2
                 println("Moeilijkheidsgraad van het woord voor speler: "+selectedWord.difficulty)
             }
