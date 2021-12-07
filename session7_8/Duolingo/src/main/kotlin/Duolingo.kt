@@ -33,7 +33,7 @@ class Duolingo(val roundSize : Int = 5, val lang: String = "eng"){
     fun play(){
         println("Vertaal de volgende woorden naar het Nederlands:")
         println("Veel succes!!")
-        println("Elk woord heeft een standaard en minimum moeilijkheidsgraad van 1")
+        println("Elk woord heeft een standaard moeilijkheidsgraad")
         println("Indien jij juist antwoordt, wordt de moeilijkheidsgraad verminderd met 1")
         println("Indien jij fout antwoordt, wordt de moeilijkheidsgraad vermeerderd met 2")
 
